@@ -1,0 +1,32 @@
+= Strider Neo4j Plugin
+:neo4j_version: 3.5.14
+
+This plugin contains custom functions and procedures to assist the Strider-Neo4j interface.
+
+[Note]
+This plugin is built for Neo4j {neo4j_version}, though it does not depend on any deprecated features.
+
+=== Get Paths
+
+This function allows you to identify whether a subgraph is traversable from a set of labeled nodes, respecting the directions of edges.
+
+[source,cypher]
+----
+MATCH ()-[e:abc {kid: 'a1'}]-()
+CALL strider.getPaths(e) YIELD nodes, edges
+RETURN nodes, edges
+----
+
+== Building
+
+This project uses maven, to build a jar-file with the function in this
+project, simply package the project with maven:
+
+    mvn clean package
+
+This will produce a jar-file, `target/strider-1.0.0.jar`,
+that can be deployed in the `plugin` directory of your Neo4j instance.
+
+== License
+
+Apache License V2, see LICENSE

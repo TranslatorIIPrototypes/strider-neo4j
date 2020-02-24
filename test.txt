@@ -1,0 +1,10 @@
+CREATE (a1 {kid: "a1", qid: "a"}), (a2 {kid: "a2", qid: "a"}),
+(b1 {kid: "b1", qid: "b"}),
+(c1 {kid: "c1", qid: "c"}), (c2 {kid: "c2", qid: "c"}),
+(d1 {kid: "d1", qid: "d"}), (d2 {kid: "d2", qid: "d"}),
+(a1)-[:abc {kid: "ab1", qid: "ab"}]->(b1), (a2)-[:abc {kid: "ab2", qid: "ab"}]->(b1),
+(b1)-[:abc {kid: "bc1", qid: "bc"}]->(c1), (b1)-[:abc {kid: "bc2", qid: "bc"}]->(c2),
+(c1)-[:abc {kid: "cd1", qid: "cd"}]->(d1), (c1)-[:abc {kid: "cd2", qid: "cd"}]->(d2),
+(a1)-[:abc {kid: "ad1", qid: "ad"}]->(d1)
+
+MATCH ()-[e:abc {kid:"ab1"}]->() CALL strider.getPaths(e) YIELD nodes, edges RETURN nodes, edges

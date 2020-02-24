@@ -1,0 +1,9 @@
+.settings/
+target/
+.classpath
+.factorypath
+.project
+.DS_Store
+bin/
+.vscode/
+plugins/
